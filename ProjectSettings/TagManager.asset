@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -13,8 +14,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - background
+  - Player
   - 
   - 
   - 
@@ -42,8 +43,8 @@ TagManager:
     uniqueID: 0
     locked: 0
   - name: Background
-    uniqueID: 633743463
+    uniqueID: 105525431
     locked: 0
-  - name: New Layer
-    uniqueID: 3245638767
+  - name: Front
+    uniqueID: 2084534191
     locked: 0
