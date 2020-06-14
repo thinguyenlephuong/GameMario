@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
+  public int score = 50;
   void OnTriggerEnter2D(Collider2D coll)
   {
-    // Destroy the coin
+    if (coll.gameObject.tag == "Player"){
+      Info.coins += score;
+    }
     Destroy(gameObject);
   }
 }

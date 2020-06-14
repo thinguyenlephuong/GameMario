@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
     public float speed = 3;
     Vector2 dir = Vector2.right;
     public float upForce = 800;
+    public int score = 200;
     void FixedUpdate() {
         GetComponent<Rigidbody2D>().velocity = dir * speed;
     }
@@ -24,10 +25,11 @@ public class Enemy : MonoBehaviour
                 GetComponent<Collider2D>().enabled = false;
                 coll.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * upForce);
                 Invoke("Die", 5);
+                Info.coins += score;
             } else {
                 coll.gameObject.GetComponent<Collider2D>().enabled = false;
                 coll.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * upForce);
-                coll.gameObject.GetComponent<PlayerMovement>().Die(3);
+                coll.gameObject.GetComponent<PlayerMovement>().Die(2);
             }
         }
         if (coll.gameObject.tag == "Enemy"){
