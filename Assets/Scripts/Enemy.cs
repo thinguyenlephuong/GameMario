@@ -25,6 +25,7 @@ public class Enemy : MonoBehaviour
                 GetComponent<Collider2D>().enabled = false;
                 coll.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * upForce);
                 Invoke("Die", 5);
+                Invoke("PlayAudio",0f);
                 Info.coins += score;
             } else {
                 coll.gameObject.GetComponent<Collider2D>().enabled = false;
@@ -41,5 +42,13 @@ public class Enemy : MonoBehaviour
 
     void Die() {
         Destroy(gameObject);
+    }
+
+    void PlayAudio(){
+        AudioSource audio = gameObject.GetComponent<AudioSource>();
+        if (!audio.isPlaying)
+        {
+          audio.Play();
+        }
     }
 }

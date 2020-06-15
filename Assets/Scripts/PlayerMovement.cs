@@ -9,6 +9,10 @@ public class PlayerMovement : MonoBehaviour
   [Range(0, 1)] public float sliding = 0.9f;
   public float jumpForce = 1200;
 
+  void Start(){
+
+  }
+
   void FixedUpdate()
   {
     float h = Input.GetAxis("Horizontal");
@@ -27,8 +31,15 @@ public class PlayerMovement : MonoBehaviour
 
     if(gameObject != null){
       bool grounded = IsGrounded();
-      if (Input.GetKey(KeyCode.UpArrow) && grounded)
+      if (Input.GetKey(KeyCode.UpArrow) && grounded){
         GetComponent<Rigidbody2D>().AddForce(Vector2.up * jumpForce);
+        AudioSource audio = gameObject.GetComponent<AudioSource>();
+        if (!audio.isPlaying)
+        {
+          audio.Play();
+        }
+      }
+        
       GetComponent<Animator>().SetBool("Jumping", !grounded);
     }
   }

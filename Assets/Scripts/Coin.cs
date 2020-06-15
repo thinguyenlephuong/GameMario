@@ -9,7 +9,17 @@ public class Coin : MonoBehaviour
   {
     if (coll.gameObject.tag == "Player"){
       Info.coins += score;
+      gameObject.GetComponent<SpriteRenderer>().enabled = false;
+      Invoke("PlayAudio",0f);
     }
-    Destroy(gameObject);
+    Destroy(gameObject,1f);
+  }
+
+  void PlayAudio(){
+    AudioSource audio = gameObject.GetComponent<AudioSource>();
+        if (!audio.isPlaying)
+        {
+          audio.Play();
+        }
   }
 }
